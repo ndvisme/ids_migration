@@ -1,7 +1,7 @@
 # Migrator
 A tool for updating `app_instance_ids` in our Postgres DB
 
-## Prerequisistes
+## Prerequisites
 - Ensure you have Docker installed
 
 ## How to Run
