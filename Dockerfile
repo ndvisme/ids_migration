@@ -1,6 +1,7 @@
 FROM python:3.12.10-alpine3.21
 
 COPY ./requirements.txt /tmp/requirements.txt
+COPY ./requirements.dev.txt /tmp/requirements.dev.txt
 COPY ./app /app
 
 WORKDIR /app
@@ -8,6 +9,7 @@ WORKDIR /app
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     /py/bin/pip install -r /tmp/requirements.txt && \
+    /py/bin/pip install -r /tmp/requirements.dev.txt && \
     rm -rf /tmp
 
 ENV PATH="/py/bin:$PATH"

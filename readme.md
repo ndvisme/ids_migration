@@ -24,3 +24,8 @@ docker run -it migrator:latest python main.py
 ```bash
 docker run migrator:latest pytest tests/
 ```
+
+## Run Linter
+```bash
+docker run migrator:latest flake8 .
+```
