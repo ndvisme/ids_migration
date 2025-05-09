@@ -1,6 +1,6 @@
 import tempfile
 import os
-from app.file_handler import File_Handler
+from app.file_handler import FileHandler
 
 
 def test_find_file():
@@ -10,7 +10,7 @@ def test_find_file():
         temp_csv_path = temp_csv.name
 
     try:
-        file_handler = File_Handler()
+        file_handler = FileHandler()
         data = file_handler.get_file(path=temp_csv_path)
 
         assert data is not None
