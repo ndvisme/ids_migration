@@ -1,14 +1,13 @@
 import tempfile
+import pytest
 import os
 from app.file_handler import FileHandler
 
 
 def test_find_file():
-
     with tempfile.NamedTemporaryFile(delete=False, suffix='.csv') as temp_csv:
         temp_csv.write(b"old_id,new_id\nOLD1,NEW1\nOLD2,NEW2")
         temp_csv_path = temp_csv.name
-
     try:
         file_handler = FileHandler()
         data = file_handler.get_file(path=temp_csv_path)
@@ -16,3 +15,13 @@ def test_find_file():
         assert data is not None
     finally:
         os.remove(temp_csv_path)
+
+
+def test_file_type():
+    file_name = 'test.txt'
+    file_handler = FileHandler()
+
+    with pytest.raises(ValueError) as exc_info:
+        file_handler.extract_data(path=file_name)
+
+    assert str(exc_info.value) == "Illegal input file type"
