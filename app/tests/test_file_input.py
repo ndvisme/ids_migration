@@ -16,6 +16,7 @@ def test_find_file():
     finally:
         os.remove(temp_csv_path)
 
+
 def test_file_type():
     file_name = 'test.txt'
     file_handler = FileHandler()
