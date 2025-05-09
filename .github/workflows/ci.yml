@@ -1,0 +1,26 @@
+name: CI Pipeline
+
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build Docker Image
+      run: |
+        docker build -t migrator .
+    - name: Run Linter
+      run: |
+        docker run migrator:latest flake8 .
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build Docker Image
+      run: |
+        docker build -t migrator .
+    - name: Run Tests
+      run: |
+        docker run migrator:latest pytest tests/
