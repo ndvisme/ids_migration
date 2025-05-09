@@ -10,11 +10,11 @@ A tool for updating `app_instance_ids` in our Postgres DB
 ```bash
 docker build -t migrator .
 ```
-2. **Run the Container
+2. **Run the Container**
 ```bash
 docker run migrator:latest
 ```
-3. **Run the App Interactively
+3. **Run the App Interactively**
 ```bash
 docker run -it migrator:latest python main.py
 ```
