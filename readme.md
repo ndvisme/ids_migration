@@ -16,7 +16,7 @@ docker run migrator:latest
 ```
 3. ** Run the App Interactively
 ```bash
-docker run -it migrator::latest python main.py
+docker run -it migrator:latest python main.py
 ```
 
 ## How to Test
