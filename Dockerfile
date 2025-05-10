@@ -15,3 +15,8 @@ RUN python -m venv /py && \
     rm -rf /tmp
 
 ENV PATH="/py/bin:$PATH"
+ENV DB_NAME="sightd"
+ENV DB_USER="postgres"
+ENV DB_PASSWORD="password"
+ENV DB_HOST="localhost"
+ENV DB_PORT=5432

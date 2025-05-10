@@ -6,10 +6,10 @@ from app.file_handler import OldToNewId
 def update_app_instances(old_to_new_ids: List['OldToNewId']):
     import os
     conn_params = {
-        "dbname": os.getenv("DB_NAME", "sightd"),
-        "user": os.getenv("DB_USER", "postgres"),
-        "password": os.getenv("DB_PASSWORD", "password"),
-        "host": os.getenv("DB_HOST", "localhost"),
+        "dbname": os.getenv("DB_NAME"),
+        "user": os.getenv("DB_USER"),
+        "password": os.getenv("DB_PASSWORD"),
+        "host": os.getenv("DB_HOST"),
         "port": int(os.getenv("DB_PORT", 5432))
     }
 
