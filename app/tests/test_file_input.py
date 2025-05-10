@@ -31,6 +31,7 @@ def test_file_type():
 
     assert str(exc_info.value) == ILLEGAL_FILE_TYPE
 
+
 def test_file_colums():
     with tempfile.NamedTemporaryFile(delete=False, suffix='.csv') as temp_csv:
         temp_csv.write(b"old_ids,new_ids\nOLD1,NEW1\nOLD2,NEW2")

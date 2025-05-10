@@ -3,6 +3,7 @@ import csv
 DATA_STRUCTURE_ERR = "Expected two columns: [old_id] [new_id]"
 ILLEGAL_FILE_TYPE = "Illegal input file type"
 
+
 class FileHandler:
 
     def validate_file_type(self, path: str):
