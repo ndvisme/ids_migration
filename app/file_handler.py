@@ -1,3 +1,4 @@
+from typing import List
 import csv
 
 DATA_STRUCTURE_ERR = "Expected two columns: [old_id] [new_id]"
@@ -25,7 +26,7 @@ class FileHandler:
 
         return data
 
-    def extract_data(self, path: str) -> list['OldToNewId']:
+    def extract_data(self, path: str) -> List['OldToNewId']:
         raw = self.get_file(path)
         old_to_new_ids = []
 

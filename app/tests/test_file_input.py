@@ -1,6 +1,7 @@
 import tempfile
 import pytest
 import os
+from typing import List
 from app.file_handler import (
     DATA_STRUCTURE_ERR,
     ILLEGAL_FILE_TYPE,
@@ -50,7 +51,7 @@ def test_extract_data():
         csv_path = temp_csv.name
     try:
         handler = FileHandler()
-        oldToNewIds: list[OldToNewId] = handler.extract_data(path=csv_path)
+        oldToNewIds: List['OldToNewId'] = handler.extract_data(path=csv_path)
 
         assert oldToNewIds[0].old == 'OLD1'
         assert oldToNewIds[0].new == 'NEW1'
