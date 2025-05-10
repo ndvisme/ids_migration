@@ -2,6 +2,8 @@ import tempfile
 import pytest
 import os
 from app.file_handler import (
+    DATA_STRUCTURE_ERR,
+    ILLEGAL_FILE_TYPE,
     FileHandler,
     OldToNewId
 )
@@ -27,7 +29,18 @@ def test_file_type():
     with pytest.raises(ValueError) as exc_info:
         file_handler.extract_data(path=file_name)
 
-    assert str(exc_info.value) == "Illegal input file type"
+    assert str(exc_info.value) == ILLEGAL_FILE_TYPE
+
+def test_file_colums():
+    with tempfile.NamedTemporaryFile(delete=False, suffix='.csv') as temp_csv:
+        temp_csv.write(b"old_ids,new_ids\nOLD1,NEW1\nOLD2,NEW2")
+        csv_path = temp_csv.name
+
+    handler = FileHandler()
+    with pytest.raises(ValueError) as exc_info:
+        handler.extract_data(csv_path)
+
+    assert str(exc_info.value == DATA_STRUCTURE_ERR)
 
 
 def test_extract_data():
