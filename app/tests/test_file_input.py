@@ -41,7 +41,7 @@ def test_file_colums():
     with pytest.raises(ValueError) as exc_info:
         handler.extract_data(csv_path)
 
-    assert str(exc_info.value == DATA_STRUCTURE_ERR)
+    assert str(exc_info.value) == DATA_STRUCTURE_ERR
 
 
 def test_extract_data():
