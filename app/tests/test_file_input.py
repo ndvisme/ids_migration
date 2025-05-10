@@ -33,10 +33,10 @@ def test_file_type():
 def test_extract_data():
     with tempfile.NamedTemporaryFile(delete=False, suffix='.csv') as temp_csv:
         temp_csv.write(b"old_id,new_id\nOLD1,NEW1\nOLD2,NEW2")
-        temp_csv_path = temp_csv.name
+        csv_path = temp_csv.name
     try:
-        file_handler = FileHandler()
-        oldToNewIds: list[OldToNewId] = file_handler.extract_data(path=temp_csv_path)
+        handler = FileHandler()
+        oldToNewIds: list[OldToNewId] = handler.extract_data(path=csv_path)
 
         assert oldToNewIds[0].old == 'OLD1'
         assert oldToNewIds[0].new == 'NEW1'
@@ -45,4 +45,4 @@ def test_extract_data():
         assert oldToNewIds[1].new == 'NEW2'
 
     finally:
-        os.remove(temp_csv_path)
+        os.remove(csv_path)
