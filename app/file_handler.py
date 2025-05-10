@@ -17,11 +17,15 @@ class FileHandler:
         return data
 
     def extract_data(self, path: str) -> list['OldToNewId']:
-        raw_data = self.get_file(path)
+        raw = self.get_file(path)
+        old_to_new_ids = []
 
-        extracted_data = [OldToNewId(old=row[0], new=row[1]) for row in raw_data[1:] if len(row) >= 2]
+        for row in raw[1:]:
+            old_to_new_ids.append(
+                OldToNewId(old=row[0], new=row[1])
+            )
 
-        return extracted_data
+        return old_to_new_ids
 
 
 class OldToNewId:
